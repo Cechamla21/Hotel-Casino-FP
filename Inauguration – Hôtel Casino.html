@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<!-- saved from url=(0056)file:///C:/Users/mcham/Downloads/flyer-casino%20(1).html -->
+<html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inauguration – Hôtel Casino</title>
+<link href="./Inauguration – Hôtel Casino_files/css2" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #F0D080;
+    --gold-dark: #8B6914;
+    --cream: #F5EDD8;
+    --dark: #0D0A04;
+    --red: #8B1A1A;
+    --red-bright: #C42B2B;
+    --green: #1A4A1A;
+  }
+
+  body {
+    background: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Playfair Display', serif;
+    padding: 20px;
+  }
+
+  .flyer {
+    width: 680px;
+    min-height: 960px;
+    background: var(--dark);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 80px rgba(201,168,76,0.4), 0 0 160px rgba(201,168,76,0.15);
+  }
+
+  /* Noise texture overlay */
+  .flyer::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Background felt texture */
+  .felt-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(139,26,26,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse at 50% 100%, rgba(26,74,26,0.14) 0%, transparent 60%),
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 2px,
+        rgba(201,168,76,0.02) 2px,
+        rgba(201,168,76,0.02) 4px
+      ),
+      var(--dark);
+  }
+
+  /* Outer border frame */
+  .border-outer {
+    position: absolute;
+    inset: 14px;
+    border: 2px solid var(--gold-dark);
+    z-index: 2;
+  }
+  .border-inner {
+    position: absolute;
+    inset: 20px;
+    border: 1px solid rgba(201,168,76,0.35);
+    z-index: 2;
+  }
+
+  /* Corner ornaments */
+  .corner {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    z-index: 3;
+  }
+  .corner svg { width: 100%; height: 100%; }
+  .corner-tl { top: 10px; left: 10px; }
+  .corner-tr { top: 10px; right: 10px; transform: scaleX(-1); }
+  .corner-bl { bottom: 10px; left: 10px; transform: scaleY(-1); }
+  .corner-br { bottom: 10px; right: 10px; transform: scale(-1); }
+
+  /* Content */
+  .content {
+    position: relative;
+    z-index: 4;
+    padding: 50px 60px 45px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  /* Top ribbon */
+  .top-ribbon {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .top-ribbon .pre-title {
+    font-family: 'Special Elite', cursive;
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    opacity: 0.9;
+  }
+
+  /* Divider ornament */
+  .divider {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 8px 0;
+  }
+  .divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .divider-diamond {
+    color: var(--gold);
+    font-size: 14px;
+  }
+
+  /* Main title */
+  .main-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-weight: 900;
+    font-size: 52px;
+    color: var(--gold-light);
+    text-align: center;
+    line-height: 1.05;
+    letter-spacing: 2px;
+    text-shadow:
+      0 0 30px rgba(201,168,76,0.6),
+      0 2px 4px rgba(0,0,0,0.8),
+      2px 2px 0px var(--gold-dark);
+    margin: 4px 0;
+  }
+
+  .main-title span {
+    display: block;
+    font-size: 28px;
+    letter-spacing: 8px;
+    font-weight: 400;
+    color: var(--gold);
+    text-shadow: 0 0 20px rgba(201,168,76,0.4);
+  }
+
+  /* Cards suit row */
+  .suits-row {
+    display: flex;
+    gap: 18px;
+    margin: 12px 0;
+    font-size: 22px;
+  }
+  .suit-red { color: var(--red-bright); text-shadow: 0 0 10px rgba(196,43,43,0.5); }
+  .suit-black { color: var(--cream); text-shadow: 0 0 10px rgba(245,237,216,0.3); }
+
+  /* Date badge */
+  .date-badge {
+    background: var(--red);
+    border: 2px solid var(--gold);
+    padding: 10px 36px;
+    text-align: center;
+    position: relative;
+    margin: 12px 0;
+    clip-path: polygon(10px 0%, calc(100% - 10px) 0%, 100% 50%, calc(100% - 10px) 100%, 10px 100%, 0% 50%);
+  }
+  .date-badge .date-text {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 13px;
+    color: var(--gold-light);
+    letter-spacing: 3px;
+  }
+  .date-badge .time-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: white;
+    text-shadow: 0 0 20px rgba(255,255,255,0.5);
+    letter-spacing: 4px;
+    line-height: 1.1;
+  }
+
+  /* Grand Opening Banner */
+  .grand-opening {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 15px;
+    letter-spacing: 5px;
+    color: var(--cream);
+    text-transform: uppercase;
+    border-top: 1px solid var(--gold-dark);
+    border-bottom: 1px solid var(--gold-dark);
+    padding: 7px 30px;
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  /* Slogan */
+  .slogan-box {
+    background: linear-gradient(135deg, rgba(139,26,26,0.3), rgba(13,10,4,0.6), rgba(139,26,26,0.3));
+    border: 1px solid var(--gold-dark);
+    padding: 18px 28px;
+    text-align: center;
+    margin: 10px 0;
+    position: relative;
+  }
+  .slogan-box::before, .slogan-box::after {
+    content: '✦';
+    position: absolute;
+    color: var(--gold);
+    font-size: 16px;
+    top: 50%; transform: translateY(-50%);
+  }
+  .slogan-box::before { left: 10px; }
+  .slogan-box::after { right: 10px; }
+
+  .slogan {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 19px;
+    color: var(--gold-light);
+    line-height: 1.5;
+    text-shadow: 0 0 15px rgba(201,168,76,0.3);
+  }
+  .slogan strong {
+    font-style: normal;
+    color: white;
+    font-size: 22px;
+    display: block;
+    font-family: 'Cinzel Decorative', serif;
+    letter-spacing: 2px;
+    margin-top: 4px;
+  }
+
+  /* Games grid */
+  .games-section {
+    width: 100%;
+    margin: 12px 0;
+  }
+  .games-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+
+  .games-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+
+  .game-card {
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 14px 8px;
+    text-align: center;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .game-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(201,168,76,0.08), transparent);
+    pointer-events: none;
+  }
+  .game-icon {
+    font-size: 26px;
+    display: block;
+    margin-bottom: 6px;
+    filter: drop-shadow(0 0 6px rgba(201,168,76,0.4));
+  }
+  .game-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--cream);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    line-height: 1.3;
+  }
+
+  /* Coming Soon section */
+  .coming-soon-section {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .coming-soon-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .coming-card {
+    border: 1px dashed rgba(201,168,76,0.35);
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(201,168,76,0.04);
+  }
+  .coming-icon { font-size: 20px; opacity: 0.7; }
+  .coming-text {
+    flex: 1;
+  }
+  .coming-label {
+    font-family: 'Special Elite', cursive;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .coming-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    color: var(--cream);
+    font-style: italic;
+  }
+  .soon-badge {
+    font-family: 'Special Elite', cursive;
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: var(--red-bright);
+    border: 1px solid var(--red-bright);
+    padding: 2px 6px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* Bottom section */
+  .bottom-bar {
+    width: 100%;
+    text-align: center;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(201,168,76,0.3);
+  }
+  .dress-code {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 12px;
+    color: rgba(201,168,76,0.7);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  .footer-logo {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 18px;
+    color: var(--gold);
+    letter-spacing: 3px;
+    text-shadow: 0 0 20px rgba(201,168,76,0.5);
+  }
+  .footer-logo span {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 6px;
+    color: var(--gold-dark);
+    margin-top: 2px;
+  }
+
+  /* Decorative vertical text */
+  .vertical-text {
+    position: absolute;
+    font-family: 'Special Elite', cursive;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: rgba(201,168,76,0.2);
+    writing-mode: vertical-rl;
+    text-transform: uppercase;
+    z-index: 3;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .vertical-text.left { left: 5px; }
+  .vertical-text.right { right: 5px; transform: translateY(-50%) scaleX(-1); }
+
+  @keyframes shimmer {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+  }
+  .main-title { animation: shimmer 4s ease-in-out infinite; }
+
+  @keyframes pulse-glow {
+    0%, 100% { text-shadow: 0 0 10px rgba(201,168,76,0.5); }
+    50% { text-shadow: 0 0 20px rgba(201,168,76,0.9), 0 0 40px rgba(201,168,76,0.3); }
+  }
+  .footer-logo { animation: pulse-glow 3s ease-in-out infinite; }
+</style>
+</head>
+<body>
+<div class="flyer">
+  <div class="felt-bg"></div>
+  <div class="border-outer"></div>
+  <div class="border-inner"></div>
+
+  <!-- Corner ornaments -->
+  <div class="corner corner-tl">
+    <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 5 L55 5 M5 5 L5 55" stroke="#C9A84C" stroke-width="1.5"></path>
+      <path d="M12 5 L12 12 L5 12" stroke="#C9A84C" stroke-width="1"></path>
+      <circle cx="5" cy="5" r="3" fill="#C9A84C"></circle>
+      <path d="M20 5 L5 20" stroke="rgba(201,168,76,0.3)" stroke-width="0.5"></path>
+      <path d="M30 5 L5 30" stroke="rgba(201,168,76,0.2)" stroke-width="0.5"></path>
+      <path d="M18 12 Q24 5 30 12 Q24 20 18 12Z" fill="#C9A84C" opacity="0.6"></path>
+    </svg>
+  </div>
+  <div class="corner corner-tr">
+    <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 5 L55 5 M5 5 L5 55" stroke="#C9A84C" stroke-width="1.5"></path>
+      <path d="M12 5 L12 12 L5 12" stroke="#C9A84C" stroke-width="1"></path>
+      <circle cx="5" cy="5" r="3" fill="#C9A84C"></circle>
+      <path d="M18 12 Q24 5 30 12 Q24 20 18 12Z" fill="#C9A84C" opacity="0.6"></path>
+    </svg>
+  </div>
+  <div class="corner corner-bl">
+    <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 5 L55 5 M5 5 L5 55" stroke="#C9A84C" stroke-width="1.5"></path>
+      <path d="M12 5 L12 12 L5 12" stroke="#C9A84C" stroke-width="1"></path>
+      <circle cx="5" cy="5" r="3" fill="#C9A84C"></circle>
+      <path d="M18 12 Q24 5 30 12 Q24 20 18 12Z" fill="#C9A84C" opacity="0.6"></path>
+    </svg>
+  </div>
+  <div class="corner corner-br">
+    <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 5 L55 5 M5 5 L5 55" stroke="#C9A84C" stroke-width="1.5"></path>
+      <path d="M12 5 L12 12 L5 12" stroke="#C9A84C" stroke-width="1"></path>
+      <circle cx="5" cy="5" r="3" fill="#C9A84C"></circle>
+      <path d="M18 12 Q24 5 30 12 Q24 20 18 12Z" fill="#C9A84C" opacity="0.6"></path>
+    </svg>
+  </div>
+
+  <div class="vertical-text left">✦ FORTUNE FAVOURS THE BOLD ✦ FORTUNE FAVOURS THE BOLD ✦</div>
+  <div class="vertical-text right">✦ FORTUNE FAVOURS THE BOLD ✦ FORTUNE FAVOURS THE BOLD ✦</div>
+
+  <div class="content">
+
+    <div class="top-ribbon">
+      <div class="pre-title">— Vous êtes cordialement invités à —</div>
+    </div>
+
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-diamond">♦ ♠ ♦</div>
+      <div class="divider-line"></div>
+    </div>
+
+    <div class="main-title">
+      HÔTEL<span>CASINO</span>
+    </div>
+
+    <div class="suits-row">
+      <span class="suit-red">♥</span>
+      <span class="suit-black">♠</span>
+      <span class="suit-red">♦</span>
+      <span class="suit-black">♣</span>
+      <span class="suit-red">♥</span>
+      <span class="suit-black">♠</span>
+      <span class="suit-red">♦</span>
+    </div>
+
+    <div class="grand-opening">✦ &nbsp; Grande Inauguration &nbsp; ✦</div>
+
+    <div class="date-badge">
+      <div class="date-text">Ouverture des portes</div>
+      <div class="time-text">22H00</div>
+      <div class="date-text">La soirée commence ici</div>
+    </div>
+
+    <div class="divider" style="margin: 10px 0;">
+      <div class="divider-line"></div>
+      <div class="divider-diamond" style="font-size:10px;">✦</div>
+      <div class="divider-line"></div>
+    </div>
+
+    <div class="slogan-box">
+      <div class="slogan">
+        Venez tenter votre chance,<br>
+        <strong>"Misez Vos Dollars,<br>Vivez la Légende !"</strong>
+        Chaque dollar joué est une histoire qui commence…
+      </div>
+    </div>
+
+    <div class="divider" style="margin: 10px 0;">
+      <div class="divider-line"></div>
+      <div class="divider-diamond" style="font-size:10px; color: #8B1A1A;">♠</div>
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- Games -->
+    <div class="games-section">
+      <div class="games-title">⟡ &nbsp; Nos jeux disponibles dès l'ouverture &nbsp; ⟡</div>
+      <div class="games-grid">
+        <div class="game-card">
+          <span class="game-icon">🃏</span>
+          <div class="game-name">Table de<br>Poker</div>
+        </div>
+        <div class="game-card">
+          <span class="game-icon">🂡</span>
+          <div class="game-name">Black<br>Jack</div>
+        </div>
+        <div class="game-card">
+          <span class="game-icon">🎰</span>
+          <div class="game-name">Machines<br>à Sous</div>
+        </div>
+        <div class="game-card">
+          <span class="game-icon">🐎</span>
+          <div class="game-name">Courses<br>Hippiques</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider" style="margin: 10px 0;">
+      <div class="divider-line"></div>
+      <div class="divider-diamond" style="font-size:9px; color: rgba(201,168,76,0.5);">· · ·</div>
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- Coming Soon -->
+    <div class="coming-soon-section">
+      <div class="games-title" style="color: rgba(201,168,76,0.6);">⟡ &nbsp; Prochainement disponible &nbsp; ⟡</div>
+      <div class="coming-soon-grid">
+        <div class="coming-card">
+          <span class="coming-icon">🛏️</span>
+          <div class="coming-text">
+            <span class="coming-label">Hébergement</span>
+            <div class="coming-name">Location de chambres de luxe</div>
+          </div>
+          <span class="soon-badge">Bientôt</span>
+        </div>
+        <div class="coming-card">
+          <span class="coming-icon">🥂</span>
+          <div class="coming-text">
+            <span class="coming-label">Détente</span>
+            <div class="coming-name">Espace lounge &amp; relaxation</div>
+          </div>
+          <span class="soon-badge">Bientôt</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom -->
+    <div class="bottom-bar">
+      <div class="dress-code">Tenue élégante de mise &nbsp;·&nbsp; 18 ans et plus &nbsp;·&nbsp; Jeu responsable</div>
+      <div class="divider" style="margin: 8px 0;">
+        <div class="divider-line"></div>
+        <div class="divider-diamond">♦</div>
+        <div class="divider-line"></div>
+      </div>
+      <div class="footer-logo">
+        HÔTEL CASINO
+        <span>✦ &nbsp; Où la Fortune Vous Attend &nbsp; ✦</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+</body></html>
